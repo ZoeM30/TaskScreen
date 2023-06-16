@@ -1,18 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import MainNav from './src/navigation/mainNav'
+import { FC } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { RootStackParamList } from './src/types';
+import {
+    ForgotPasswordScreen,
+    HomeScreen,
+    LoginScreen,
+    ResetPasswordScreen,
+    SignUpScreen,
+    SplashScreen,
+    VerifyEmailScreen,
+} from './src/screens';
 
-export default function App() {
-  return (
-    <MainNav />
-  );
-}
+const Stack = createStackNavigator<RootStackParamList>();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App: FC = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name='Splash' component={SplashScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='SignUp' component={SignUpScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='Forgot' component={ForgotPasswordScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='Reset' component={ResetPasswordScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='Verify' component={VerifyEmailScreen} options={{ headerShown: false }} />
+
+                {/* Add other screens here */}
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+};
+
+export default App;
