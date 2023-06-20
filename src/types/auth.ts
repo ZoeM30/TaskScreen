@@ -30,18 +30,24 @@ export interface IAuthSlice {
         clearMessage: () => void;
     };
     reset: {
+        otp: string;
+        message: string | null;
         loading: boolean;
         success: boolean;
         error: string | null;
         setLoading: (value: boolean) => void;
+        setOtp: (otp: string) => void;
         clearError: () => void;
+        clearMessage: () => void;
     };
     forgot: {
         loading: boolean;
         success: boolean;
         error: string | null;
+        message: string | null;
         setLoading: (value: boolean) => void;
         clearError: () => void;
+        clearMessage: () => void;
     };
     verify: {
         message: string | null;

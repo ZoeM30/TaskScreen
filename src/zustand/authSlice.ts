@@ -44,18 +44,24 @@ export const authSlice = create<IAuthSlice>((set, get) => ({
             })),
     },
     reset: {
+        otp: '',
         loading: false,
         success: false,
         error: null,
+        message: null,
         setLoading: (value) => set((state) => ({ ...state, reset: { ...state.reset, loading: value } })),
+        setOtp: (otp) => set((state) => ({ ...state, reset: { ...state.reset, otp } })),
         clearError: () => set((state) => ({ ...state, reset: { ...state.reset, error: null } })),
+        clearMessage: () => set((state) => ({ ...state, reset: { ...state.reset, message: null } })),
     },
     forgot: {
         loading: false,
         success: false,
         error: null,
+        message: null,
         setLoading: (value) => set((state) => ({ ...state, forgot: { ...state.forgot, loading: value } })),
         clearError: () => set((state) => ({ ...state, forgot: { ...state.forgot, error: null } })),
+        clearMessage: () => set((state) => ({ ...state, forgot: { ...state.forgot, message: null } })),
     },
     verify: {
         message: null,
@@ -164,6 +170,7 @@ export const authSlice = create<IAuthSlice>((set, get) => ({
             ...state,
             reset: {
                 ...state.reset,
+                message: result.message,
                 success: true,
                 loading: false,
             },
@@ -191,6 +198,7 @@ export const authSlice = create<IAuthSlice>((set, get) => ({
             ...state,
             forgot: {
                 ...state.forgot,
+                message: 'Otp has been sent to your email',
                 success: true,
                 loading: false,
             },

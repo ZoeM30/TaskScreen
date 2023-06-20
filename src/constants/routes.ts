@@ -5,6 +5,7 @@ export enum AuthRoutes {
     Forgot = 'Forgot',
     Reset = 'Reset',
     Verify = 'Verify',
+    ResetOtp = 'ResetOtp',
 }
 
 export enum Routes {

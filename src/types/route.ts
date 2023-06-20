@@ -6,5 +6,6 @@ export type RootStackParamList = {
     Forgot: undefined;
     Verify: undefined;
     Dashboard: undefined;
+    ResetOtp: undefined;
     // Add other screen names and their params here
 };

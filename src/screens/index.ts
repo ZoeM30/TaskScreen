@@ -5,6 +5,7 @@ import ResetPasswordScreen from './ResetPassword';
 import SplashScreen from './Splash';
 import VerifyEmailScreen from './VerifyEmail';
 import ForgotPasswordScreen from './ForgotPassword';
+import ResetOtpScreen from './ResetOtp';
 
 export {
     LoginScreen,
@@ -14,4 +15,5 @@ export {
     VerifyEmailScreen,
     ForgotPasswordScreen,
     ResetPasswordScreen,
+    ResetOtpScreen,
 };

@@ -11,9 +11,10 @@ import {
     RegisterScreen,
     SplashScreen,
     VerifyEmailScreen,
+    ResetOtpScreen,
 } from './src/screens';
 import { AuthProvider } from './src/contexts/AuthContext';
-import { navigationRef } from './src/constants';
+import { AuthRoutes, navigationRef, Routes } from './src/constants';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -23,13 +24,46 @@ const App: FC = () => {
             <NavigationContainer ref={navigationRef}>
                 <AuthProvider>
                     <Stack.Navigator>
-                        <Stack.Screen name='Splash' component={SplashScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name='Register' component={RegisterScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name='Forgot' component={ForgotPasswordScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name='Reset' component={ResetPasswordScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name='Verify' component={VerifyEmailScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name='Dashboard' component={DashboardScreen} options={{ headerShown: false }} />
+                        <Stack.Screen
+                            name={AuthRoutes.Splash}
+                            component={SplashScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Register}
+                            component={RegisterScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Login}
+                            component={LoginScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Forgot}
+                            component={ForgotPasswordScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Reset}
+                            component={ResetPasswordScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Verify}
+                            component={VerifyEmailScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.ResetOtp}
+                            component={ResetOtpScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={Routes.Dashboard}
+                            component={DashboardScreen}
+                            options={{ headerShown: false }}
+                        />
 
                         {/* Add other screens here */}
                     </Stack.Navigator>
