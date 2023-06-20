@@ -1,8 +1,9 @@
-import React, { useState, useEffect, FC } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { FC, useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../types';
-import { logo } from '../constants';
+import { RootStackParamList } from '../types/route';
+import { AuthRoutes, logo, Routes } from '../constants';
+import useAuth from '../hooks/useAuth';
 
 type SplashScreenProps = {
     navigation: StackNavigationProp<RootStackParamList, 'Splash'>;
@@ -13,6 +14,10 @@ const SplashScreen: FC<SplashScreenProps> = ({ navigation }) => {
     const [letterIndex, setLetterIndex] = useState(0);
     const words = ['Simplify', 'Achieve', 'Zenitha'];
 
+    const { auth } = useAuth();
+
+    const { token } = auth;
+
     useEffect(() => {
         const timer = setTimeout(() => {
             if (letterIndex < words[wordIndex].length - 1) {
@@ -21,7 +26,9 @@ const SplashScreen: FC<SplashScreenProps> = ({ navigation }) => {
                 setWordIndex(wordIndex + 1);
                 setLetterIndex(0);
             } else {
-                navigation.replace('Home');
+                const path = token ? Routes.Dashboard : AuthRoutes.Login;
+
+                navigation.replace(path);
             }
         }, 200);
 

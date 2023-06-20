@@ -28,7 +28,7 @@ exports[`renders correctly 1`] = `
         "justifyContent": "center",
         "marginVertical": 20,
         "opacity": 1,
-        "padding": 18,
+        "padding": 10,
         "width": 681.8181818181818,
       }
     }

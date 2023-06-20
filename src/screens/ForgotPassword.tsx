@@ -1,36 +1,27 @@
-import React, { FC, useState } from 'react';
-import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
+import React, { FC } from 'react';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Input, Button } from '../components';
 import { RootStackParamList } from '../types';
 import Colors from '../constants/colors';
+import { AuthRoutes } from '../constants';
+import { ForgotPasswordForm } from '../sections/auth';
 
 const { width } = Dimensions.get('screen');
 
-type ForgotPasswordScreenProps = {
-    navigation: StackNavigationProp<RootStackParamList, 'Forgot'>;
+export type ForgotPasswordScreenProps = {
+    navigation: StackNavigationProp<RootStackParamList, AuthRoutes.Forgot>;
 };
 
 const ForgotPasswordScreen: FC<ForgotPasswordScreenProps> = ({ navigation }) => {
-    const [email, setEmail] = useState<string>('');
-
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Forgot Password?</Text>
             <Text style={styles.small_text}>Don't worry, enter your email and we'll send you a verification code.</Text>
-            <Input placeholder='Email' onChangeText={(text) => setEmail(text)} />
-
-            <Pressable onPress={() => navigation.navigate('Verify')}>
-                <Button title='Send' onPress={() => navigation.navigate('Verify')} />
-            </Pressable>
-
+            <ForgotPasswordForm navigation={navigation} />
             <View style={styles.link}>
-                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                <TouchableOpacity onPress={() => navigation.navigate(AuthRoutes.Login)}>
                     <Text style={styles.link_text}>Login</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                    <Text style={styles.link_text}>Sign Up</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -59,6 +50,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     small_text: {
+        width: '80%',
         marginBottom: 10,
         fontSize: 16,
     },

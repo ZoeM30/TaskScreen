@@ -3,23 +3,23 @@ import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../types';
 import Colors from '../constants/colors';
-import { AuthRoutes, Routes } from '../constants';
-import { VerifyForm } from '../sections/auth';
+import { AuthRoutes } from '../constants';
+import { ResetOtpForm } from '../sections/auth';
 
 const { width } = Dimensions.get('screen');
 
-export type VerifyEmailScreenProps = {
-    navigation: StackNavigationProp<RootStackParamList, AuthRoutes.Verify>;
+export type ResetOtpScreenProps = {
+    navigation: StackNavigationProp<RootStackParamList, AuthRoutes.ResetOtp>;
 };
 
-const VerifyEmailScreen: React.FC<VerifyEmailScreenProps> = ({ navigation }) => {
+const VerifyEmailScreen: React.FC<ResetOtpScreenProps> = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Let's verify your email</Text>
+            <Text style={styles.title}>Reset Your Password</Text>
             <Text style={styles.small_text}>Please enter the six digit code sent to your email.</Text>
-            <VerifyForm navigation={navigation} />
-            <Pressable onPress={() => navigation.navigate(Routes.Dashboard)}>
-                <Text style={styles.link_text}>Skip</Text>
+            <ResetOtpForm navigation={navigation} />
+            <Pressable onPress={() => navigation.navigate(AuthRoutes.Login)}>
+                <Text style={styles.link_text}>Login</Text>
             </Pressable>
         </View>
     );

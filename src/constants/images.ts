@@ -6,7 +6,7 @@ interface ImageData {
 }
 
 export const google: ImageData = {
-    link: require('../../assets/google_black.png'),
+    link: require('../../assets/google.png'),
 };
 
 export const logo: ImageData = {

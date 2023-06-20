@@ -1,35 +1,76 @@
 import { FC } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 import { RootStackParamList } from './src/types';
 import {
+    DashboardScreen,
     ForgotPasswordScreen,
-    HomeScreen,
     LoginScreen,
     ResetPasswordScreen,
-    SignUpScreen,
+    RegisterScreen,
     SplashScreen,
     VerifyEmailScreen,
+    ResetOtpScreen,
 } from './src/screens';
+import { AuthProvider } from './src/contexts/AuthContext';
+import { AuthRoutes, navigationRef, Routes } from './src/constants';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 const App: FC = () => {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name='Splash' component={SplashScreen} options={{ headerShown: false }} />
+        <>
+            <NavigationContainer ref={navigationRef}>
+                <AuthProvider>
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name={AuthRoutes.Splash}
+                            component={SplashScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Register}
+                            component={RegisterScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Login}
+                            component={LoginScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Forgot}
+                            component={ForgotPasswordScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Reset}
+                            component={ResetPasswordScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.Verify}
+                            component={VerifyEmailScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={AuthRoutes.ResetOtp}
+                            component={ResetOtpScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <Stack.Screen
+                            name={Routes.Dashboard}
+                            component={DashboardScreen}
+                            options={{ headerShown: false }}
+                        />
 
-                <Stack.Screen name='Home' component={HomeScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='SignUp' component={SignUpScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='Login' component={LoginScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='Forgot' component={ForgotPasswordScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='Reset' component={ResetPasswordScreen} options={{ headerShown: false }} />
-                <Stack.Screen name='Verify' component={VerifyEmailScreen} options={{ headerShown: false }} />
-
-                {/* Add other screens here */}
-            </Stack.Navigator>
-        </NavigationContainer>
+                        {/* Add other screens here */}
+                    </Stack.Navigator>
+                </AuthProvider>
+            </NavigationContainer>
+            <Toast />
+        </>
     );
 };
 

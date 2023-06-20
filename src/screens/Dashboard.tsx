@@ -1,10 +1,17 @@
 import React, { FC } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useAuth } from '../hooks';
+import { Button } from '../components';
 
 const Dashboard: FC = () => {
+    const { auth, logout } = useAuth();
+
+    const { user } = auth;
+
     return (
         <View style={styles.container}>
-            <Text>Dashboard</Text>
+            <Text>Hello, {user?.email}</Text>
+            <Button title='Logout' onPress={logout} />
         </View>
     );
 };
