@@ -1,5 +1,6 @@
 const Colors = {
     main_text: '#212529',
+    disabled: '#ccc',
     button_background: '#000000',
     placeholder: '#ADB5BD',
     button_text: '#F8F9FA',
