@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-import { Button, HorizontalDivider } from '../components';
-import { LoginForm } from '../sections/auth';
+import { HorizontalDivider } from '../components';
+import { GoogleAuth, LoginForm } from '../sections/auth';
 
 import { RootStackParamList } from '../types';
 import Colors from '../constants/colors';
-import { AuthRoutes, google } from '../constants';
+import { AuthRoutes } from '../constants';
 
 const { width } = Dimensions.get('screen');
 
@@ -28,7 +28,7 @@ const LoginScreen: FC<LoginScreenProps> = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <HorizontalDivider />
-            <Button icon={google.link} title='Continue with Google' onPress={() => alert(`Pressed`)} />
+            <GoogleAuth navigation={navigation} />
         </View>
     );
 };
