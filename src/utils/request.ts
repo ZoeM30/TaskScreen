@@ -10,7 +10,7 @@ export const makeRequest = async (
     data?: RequestBody,
 ): Promise<FetchResponse> => {
     try {
-        const baseUrl = Constants.manifest?.extra?.apiBaseUrl;
+        const baseUrl = Constants.expoConfig?.extra?.apiBaseUrl;
 
         const config: RequestConfig = {
             method,

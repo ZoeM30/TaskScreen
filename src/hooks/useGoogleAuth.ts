@@ -1,33 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
-import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const useGoogleAuth = () => {
-    GoogleSignin.configure({
-        webClientId: Constants.manifest?.extra?.webClientId,
+    const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+        androidClientId: Constants.expoConfig?.extra?.androidClientId,
+        expoClientId: Constants.expoConfig?.extra?.expoClientId,
     });
 
     const [token, setToken] = useState<string>('');
-    const onGoogleButtonPress = async () => {
-        // Check if your device supports Google Play
-        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-        // Get the users ID token
-        const { idToken } = await GoogleSignin.signIn();
 
-        // Create a Google credential with the token
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    useEffect(() => {
+        if (response?.type === 'success') {
+            setToken(response.params?.id_token || '');
+        }
+    }, [response]);
 
-        // Sign-in the user with the credential
-        const result = await auth().signInWithCredential(googleCredential);
-
-        const authToken = await result.user.getIdToken();
-        console.log(authToken);
-
-        setToken(authToken);
-    };
-
-    return { onGoogleButtonPress, token };
+    return { promptAsync, token, request };
 };
 
 export default useGoogleAuth;

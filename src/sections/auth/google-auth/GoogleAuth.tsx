@@ -9,7 +9,7 @@ import { LoginScreenProps } from '../../../screens/Login';
 type GoogleAuthProps = RegisterScreenProps | LoginScreenProps;
 
 const GoogleAuth: FC<GoogleAuthProps> = ({ navigation }) => {
-    const { onGoogleButtonPress, token } = useGoogleAuth();
+    const { promptAsync, token, request } = useGoogleAuth();
 
     const { auth, registerOrLogin } = useAuth();
 
@@ -35,7 +35,15 @@ const GoogleAuth: FC<GoogleAuthProps> = ({ navigation }) => {
         // eslint-disable-next-line
     }, [isAuthenticated]);
 
-    return <Button loading={loading} icon={google.link} title='Continue with Google' onPress={onGoogleButtonPress} />;
+    return (
+        <Button
+            disabled={!request}
+            loading={loading}
+            icon={google.link}
+            title='Continue with Google'
+            onPress={promptAsync}
+        />
+    );
 };
 
 export default GoogleAuth;

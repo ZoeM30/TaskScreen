@@ -6,12 +6,11 @@ export default {
         slug: 'zenitha',
         scheme: 'zenitha',
         version: '1.0.0',
-        plugins: ['@react-native-google-signin/google-signin', '@react-native-firebase/app'],
         orientation: 'portrait',
-        icon: './assets/icon.png',
+        icon: './assets/logo.png',
         userInterfaceStyle: 'light',
         splash: {
-            image: './assets/splash.png',
+            image: './assets/logo.png',
             resizeMode: 'contain',
             backgroundColor: '#ffffff',
         },
@@ -24,8 +23,7 @@ export default {
                 foregroundImage: './assets/adaptive-icon.png',
                 backgroundColor: '#ffffff',
             },
-            package: 'com.zenitha.zenitha',
-            googleServicesFile: './google-services.json',
+            package: 'com.zenitha.com',
         },
         web: {
             favicon: './assets/favicon.png',
@@ -43,7 +41,7 @@ export default {
                 projectId: process.env.EAS_PROJECT_ID,
             },
             androidClientId: process.env.ANDROID_CLIENT_ID,
-            webClientId: process.env.WEB_CLIENT_ID,
+            expoClientId: process.env.EXPO_CLIENT_ID,
         },
     },
 };
