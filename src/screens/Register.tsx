@@ -3,17 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-import { Button, HorizontalDivider } from '../components';
+import { HorizontalDivider } from '../components';
 import { RootStackParamList } from '../types';
 import Colors from '../constants/colors';
-import { RegisterForm } from '../sections/auth';
-import { AuthRoutes, google } from '../constants';
+import { GoogleAuth, RegisterForm } from '../sections/auth';
+import { AuthRoutes } from '../constants';
 
-export type SignUpScreenProps = {
+export type RegisterScreenProps = {
     navigation: StackNavigationProp<RootStackParamList, AuthRoutes.Register>;
 };
 
-const SignUpScreen: FC<SignUpScreenProps> = ({ navigation }) => {
+const SignUpScreen: FC<RegisterScreenProps> = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Register</Text>
@@ -24,7 +24,7 @@ const SignUpScreen: FC<SignUpScreenProps> = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <HorizontalDivider />
-            <Button icon={google.link} title='Continue with Google' onPress={() => alert(`Pressed`)} />
+            <GoogleAuth navigation={navigation} />
         </View>
     );
 };

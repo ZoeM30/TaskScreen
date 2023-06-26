@@ -12,7 +12,8 @@
         "test": "yarn jest",
         "prettier:fix": "prettier --write .",
         "pre-commit": "yarn prettier:fix && yarn lint",
-        "ci:check": "yarn lint && yarn test"
+        "ci:check": "yarn lint && yarn test",
+        "build-apk": "eas build -p android --profile preview"
     },
     "jest": {
         "preset": "jest-expo"
@@ -22,8 +23,12 @@
         "@hookform/resolvers": "^3.1.1",
         "@react-navigation/native": "^6.1.6",
         "@react-navigation/stack": "^6.3.16",
-        "axios": "^1.4.0",
+        "dotenv": "^16.3.1",
         "expo": "~48.0.18",
+        "expo-auth-session": "~4.0.3",
+        "expo-constants": "^14.2.1",
+        "expo-crypto": "~12.2.1",
+        "expo-dev-client": "~2.2.1",
         "expo-secure-store": "~12.1.1",
         "expo-status-bar": "~1.4.4",
         "jwt-decode": "^3.1.2",
