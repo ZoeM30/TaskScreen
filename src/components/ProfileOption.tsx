@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import { Pressable, StyleSheet, Image, View, ImageURISource } from 'react-native'
+import React, { FC } from 'react';
+import { Pressable, StyleSheet, Image, View, ImageURISource } from 'react-native';
 
 interface IOptionProps {
     title: string;
@@ -7,16 +7,16 @@ interface IOptionProps {
     icon?: ImageURISource;
 }
 
-const ProfileOption:FC<IOptionProps> = ({title,onPress,icon}) => {
-  return (
-    <View style={styles.container} >
-        {icon && <Image source={icon} />}
-      <Pressable style={styles.option } >{title}</Pressable>
-    </View>
-  )
-}
+const ProfileOption: FC<IOptionProps> = ({ title, onPress, icon }) => {
+    return (
+        <View style={styles.container}>
+            {icon && <Image source={icon} />}
+            <Pressable style={styles.option}>{title}</Pressable>
+        </View>
+    );
+};
 
-export default ProfileOption
+export default ProfileOption;
 
 const styles = StyleSheet.create({
     container: {
@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingVertical: 12,
         paddingHorizontal: 0,
-      },
-      option: {
+    },
+    option: {
         flexDirection: 'column',
         flexGrow: 1,
         flexShrink: 0,
@@ -38,5 +38,5 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         lineHeight: 24,
         letterSpacing: -0.25,
-      }
+    },
 });

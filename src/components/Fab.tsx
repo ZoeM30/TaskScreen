@@ -13,12 +13,18 @@ type FabProps = {
     onPress?: () => void;
 };
 
-const Fab: FC<FabProps> = ({onPress}) => {
+const Fab: FC<FabProps> = ({ onPress }) => {
     const [visible] = React.useState(true);
 
     return (
         <View style={styles.container}>
-            <FAB visible={visible} icon={{ name: 'add', color: 'white' }} color='#252525' placement='right' onPress={onPress}/>
+            <FAB
+                visible={visible}
+                icon={{ name: 'add', color: 'white' }}
+                color='#252525'
+                placement='right'
+                onPress={onPress}
+            />
         </View>
     );
 };

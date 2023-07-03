@@ -12,6 +12,7 @@ import {
     SplashScreen,
     VerifyEmailScreen,
     ResetOtpScreen,
+    ProfileScreen
 } from './src/screens';
 import { AuthProvider } from './src/contexts/AuthContext';
 import { AuthRoutes, navigationRef, Routes } from './src/constants';
@@ -24,6 +25,11 @@ const App: FC = () => {
             <NavigationContainer ref={navigationRef}>
                 <AuthProvider>
                     <Stack.Navigator>
+                        <Stack.Screen
+                            name={Routes.Profile}
+                            component={ProfileScreen}
+                            options={{ headerShown: false }}
+                        />
                         <Stack.Screen
                             name={AuthRoutes.Splash}
                             component={SplashScreen}
