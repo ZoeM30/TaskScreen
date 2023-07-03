@@ -12,7 +12,7 @@ import {
     SplashScreen,
     VerifyEmailScreen,
     ResetOtpScreen,
-    ProfileScreen
+    ProfileScreen,
 } from './src/screens';
 import { AuthProvider } from './src/contexts/AuthContext';
 import { AuthRoutes, navigationRef, Routes } from './src/constants';
